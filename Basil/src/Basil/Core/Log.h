@@ -1,12 +1,11 @@
 #pragma once
 
-#include <memory>
-
 #include "Core.h"
 
 #include "spdlog/spdlog.h"
 #include "spdlog/common.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
+
 
 namespace Basil {
 	class BASIL_API Log

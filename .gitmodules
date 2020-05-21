@@ -1,0 +1,3 @@
+[submodule "Basil\\vendor\\GLFW"]
+	path = Basil\\vendor\\GLFW
+	url = https://github.com/TheCherno/glfw

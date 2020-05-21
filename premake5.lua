@@ -9,7 +9,12 @@ workspace "Basil"
 		"Dist"
 	}
 
-outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+	outputdir = "%{cfg.buildcfg}-%{cfg.system}-%{cfg.architecture}"
+
+	IncludeDir = {}
+	IncludeDir["GLFW"] = "Basil/vendor/GLFW/include"
+	include "Basil/vendor/GLFW"
+	
 project "Basil"
 	location "Basil"
 	kind "SharedLib"
@@ -18,13 +23,23 @@ project "Basil"
 	targetdir ("bin/" .. outputdir .."/%{prj.name}")
 	objdir ("bin-int/" .. outputdir .."/%{prj.name}")
 
+	pchheader "basilpch.h"
+	pchsource "Basil/src/basilpch.cpp"
+	
 	files {
 		"%{prj.name}/src/**.h",
 		"%{prj.name}/src/**.cpp"
 	}
 
 	includedirs {
-		"Basil/vendor/spdlog/include"
+	   "Basil/vendor/spdlog/include",	   
+	   "%{prj.name}/src",
+	   "%{IncludeDir.GLFW}"
+	}
+
+	links {
+	   "GLFW",
+	   "opengl32.lib"
 	}
 
 	filter "system:windows"
