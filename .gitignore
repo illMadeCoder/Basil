@@ -1,6 +1,6 @@
 **/bin/
 !vendor/bin/premake/
-**bin-int/
+bin-int/
 
 *.log
 
